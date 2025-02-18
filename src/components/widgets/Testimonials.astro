@@ -11,12 +11,20 @@ const {
   tagline = '',
   testimonials = [],
   callToAction,
-
+  isRandomSequence = false,
   id,
   isDark = false,
   classes = {},
   bg = await Astro.slots.render('bg'),
+  showToggle = true,
 } = Astro.props;
+
+// Randomize testimonials if isRandomSequence is true
+const shuffledTestimonials = isRandomSequence ? testimonials.sort(() => 0.5 - Math.random()) : testimonials;
+
+// Split testimonials into initial and remaining
+const initialTestimonials = shuffledTestimonials.slice(0, 3);
+const remainingTestimonials = shuffledTestimonials.slice(3);
 ---
 
 <WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-6xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
@@ -24,47 +32,98 @@ const {
 
   <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
     {
-      testimonials &&
-        testimonials.map(({ title, testimonial, name, job, image }) => (
-          <div class="flex h-auto intersect-once motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter">
-            <div class="flex flex-col p-4 md:p-6 rounded-md shadow-xl dark:shadow-none dark:border dark:border-slate-600">
-              {title && <h2 class="text-lg font-medium leading-6 pb-4">{title}</h2>}
-              {testimonial && (
-                <blockquote class="flex-auto">
-                  <p class="text-muted">" {testimonial} "</p>
-                </blockquote>
+      initialTestimonials.map(({ title, testimonial, name, job, image }) => (
+        <div class="flex h-auto intersect-once motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter">
+          <div class="flex flex-col p-4 md:p-6 rounded-md shadow-xl dark:shadow-none dark:border dark:border-slate-600">
+            {title && <h2 class="text-lg font-medium leading-6 pb-4">{title}</h2>}
+            {testimonial && (
+              <blockquote class="flex-auto">
+                <p class="text-muted">" {testimonial} "</p>
+              </blockquote>
+            )}
+
+            <hr class="border-slate-200 dark:border-slate-600 my-4" />
+
+            <div class="flex items-center">
+              {image && (
+                <div class="h-10 w-10 rounded-full border border-slate-200 dark:border-slate-600">
+                  {typeof image === 'string' ? (
+                    <Fragment set:html={image} />
+                  ) : (
+                    <Image
+                      class="h-10 w-10 rounded-full border border-slate-200 dark:border-slate-600 min-w-full min-h-full"
+                      width={40}
+                      height={40}
+                      widths={[400, 768]}
+                      layout="fixed"
+                      {...image}
+                    />
+                  )}
+                </div>
               )}
 
-              <hr class="border-slate-200 dark:border-slate-600 my-4" />
-
-              <div class="flex items-center">
-                {image && (
-                  <div class="h-10 w-10 rounded-full border border-slate-200 dark:border-slate-600">
-                    {typeof image === 'string' ? (
-                      <Fragment set:html={image} />
-                    ) : (
-                      <Image
-                        class="h-10 w-10 rounded-full border border-slate-200 dark:border-slate-600 min-w-full min-h-full"
-                        width={40}
-                        height={40}
-                        widths={[400, 768]}
-                        layout="fixed"
-                        {...image}
-                      />
-                    )}
-                  </div>
-                )}
-
-                <div class="grow ml-3 rtl:ml-0 rtl:mr-3">
-                  {name && <p class="text-base font-semibold">{name}</p>}
-                  {job && <p class="text-xs text-muted">{job}</p>}
-                </div>
+              <div class="grow ml-3 rtl:ml-0 rtl:mr-3">
+                {name && <p class="text-base font-semibold">{name}</p>}
+                {job && <p class="text-xs text-muted">{job}</p>}
               </div>
             </div>
           </div>
-        ))
+        </div>
+      ))
     }
   </div>
+
+  <div id="more-testimonials" class="hidden grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+    {
+      remainingTestimonials.map(({ title, testimonial, name, job, image }) => (
+        <div class="flex h-auto intersect-once motion-safe:md:intersect:animate-fade motion-safe:md:opacity-0 intersect-quarter">
+          <div class="flex flex-col p-4 md:p-6 rounded-md shadow-xl dark:shadow-none dark:border dark:border-slate-600">
+            {title && <h2 class="text-lg font-medium leading-6 pb-4">{title}</h2>}
+            {testimonial && (
+              <blockquote class="flex-auto">
+                <p class="text-muted">" {testimonial} "</p>
+              </blockquote>
+            )}
+
+            <hr class="border-slate-200 dark:border-slate-600 my-4" />
+
+            <div class="flex items-center">
+              {image && (
+                <div class="h-10 w-10 rounded-full border border-slate-200 dark:border-slate-600">
+                  {typeof image === 'string' ? (
+                    <Fragment set:html={image} />
+                  ) : (
+                    <Image
+                      class="h-10 w-10 rounded-full border border-slate-200 dark:border-slate-600 min-w-full min-h-full"
+                      width={40}
+                      height={40}
+                      widths={[400, 768]}
+                      layout="fixed"
+                      {...image}
+                    />
+                  )}
+                </div>
+              )}
+
+              <div class="grow ml-3 rtl:ml-0 rtl:mr-3">
+                {name && <p class="text-base font-semibold">{name}</p>}
+                {job && <p class="text-xs text-muted">{job}</p>}
+              </div>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  {
+    showToggle && remainingTestimonials.length > 0 && (
+      <div class="flex justify-center mx-auto w-fit mt-8 md:mt-12 font-medium">
+        <Button id="toggle-btn" text={"Pokaż więcej"} />
+      </div>
+    )
+  }
+
   {
     callToAction && (
       <div class="flex justify-center mx-auto w-fit mt-8 md:mt-12 font-medium">
@@ -73,3 +132,24 @@ const {
     )
   }
 </WidgetWrapper>
+
+{showToggle && remainingTestimonials.length > 0 && (
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const moreTestimonials = document.getElementById("more-testimonials");
+      const toggleBtn = document.getElementById("toggle-btn");
+
+      if (toggleBtn && moreTestimonials) {
+        toggleBtn.addEventListener("click", function () {
+          if (moreTestimonials.classList.contains("hidden")) {
+            moreTestimonials.classList.remove("hidden");
+            toggleBtn.textContent = "Pokaż mniej";
+          } else {
+            moreTestimonials.classList.add("hidden");
+            toggleBtn.textContent = "Pokaż więcej";
+          }
+        });
+      }
+    });
+  </script>
+)}
