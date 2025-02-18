@@ -234,6 +234,9 @@ export interface Pricing extends Omit<Headline, 'classes'>, Widget {
 export interface Testimonials extends Omit<Headline, 'classes'>, Widget {
   testimonials?: Array<Testimonial>;
   callToAction?: CallToAction;
+  isRandomSequence?: boolean;
+  showToggle?: boolean;
+  toggleButtonLabel?: string;
 }
 
 export interface Brands extends Omit<Headline, 'classes'>, Widget {
@@ -267,6 +270,7 @@ export interface Steps extends Omit<Headline, 'classes'>, Widget {
     description?: string;
     icon?: string;
     classes?: Record<string, string>;
+    href?: string;
   }>;
   callToAction?: string | CallToAction;
   image?: string | Image;
