@@ -7,7 +7,7 @@ import Content from '~/components/widgets/Content.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Features3 from '~/components/widgets/Features3.astro';
 import Features2 from '~/components/widgets/Features2.astro';
-import Testimonials from '~/components/widgets/Testimonials.astro';
+import Testimonials2 from '~/components/widgets/Testimonials2.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import Steps2 from '~/components/widgets/Steps2.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
@@ -51,7 +51,6 @@ const metadata = {
       { title: 'Naszywki i emblematy', description: 'Produkujemy wszywki i emblematy – łatwe w aplikacji i niezwykle trwałe.', icon: 'tabler:wand' }
     ]}
   />
-
 
   <!-- Features3 Widget - our skills -->
 
@@ -102,36 +101,36 @@ const metadata = {
 
   <Steps
     title="Proces realizacji"
-    tagline='Jak zamówić haft u nas?'
+    tagline="Jak zamówić haft u nas?"
     items={[
       {
         title: 'Krok 1: Skontaktuj się z nami',
         description:
           'Napisz do nas i podaj szczegóły zamówienia – ilość sztuk, wielkość haftu, rodzaj materiału oraz plik z logo (najlepiej *.PDF lub dobrej jakości *.PNG).',
-        icon: 'tabler:package',
+        icon: 'tabler:phone-done',
       },
       {
         title: 'Krok 2: Wycena i przygotowanie',
         description:
           'Otrzymasz od nas wycenę oraz rozpoczynamy proces przygotowania – projektowanie haftu, wizualizacja i dobór nici.',
-        icon: 'tabler:package',
+        icon: 'tabler:calculator',
       },
       {
         title: 'Krok 3: Produkcja',
         description:
           'Po akceptacji projektu przystępujemy do haftowania na wybranym produkcie z dbałością o każdy detal.',
-        icon: 'tabler:package',
+        icon: 'tabler:needle-thread',
       },
       {
         title: 'Krok 4: Odbiór i satysfakcja',
         description:
           'Gotowe zamówienie odbierasz osobiście lub wysyłamy je do Ciebie. Ciesz się perfekcyjnie wykonanym haftem!',
-        icon: 'tabler:package',
+        icon: 'tabler:package-import',
       },
       {
         title: 'Krok 5: Twoja opinia',
         description: 'Twoje zadowolenie jest dla nas kluczowe – podziel się opinią i poleć nas znajomym!',
-        icon: 'tabler:package',
+        icon: 'tabler:mood-heart',
       },
     ]}
     image={{
@@ -141,38 +140,116 @@ const metadata = {
   />
 
   <!-- Content Widget - Types of Embroidery -->
+  <!-- Content Widget **************** -->
 
   <Content
-    title='Rodzaje haftu komputerowego'
-    tagline='Techniki i możliwości, które oferujemy'
+    title="Rodzaje haftu komputerowego"
+    tagline="Techniki i możliwości, które oferujemy"
     isReversed
     items={[
-      { title: 'Haft w różnych rozmiarach', description: 'Od precyzyjnych liter 4 mm po efektowne napisy o długości nawet 40 cm.', icon: 'tabler:wand' },
-      { title: 'Haft wielokolorowy', description: 'Możliwość użycia do 12 kolorów w jednym wzorze, co pozwala na pełne odwzorowanie detali.', icon: 'tabler:wand' },
-      { title: 'Różne techniki haftu', description: 'Oferujemy haft stebnówkowy, satynowy, po odbrysie, aplikacyjny, tatami oraz efektowny haft 3D.', icon: 'tabler:wand' },
-      { title: 'Specjalistyczne nici', description: 'Haftujemy nićmi metalizowanymi, cieniowanymi, fluorescencyjnymi oraz trudnopalnymi.', icon: 'tabler:wand' }
+      {
+        title: 'Haft w różnych rozmiarach:',
+        description: 'Od precyzyjnych liter 4 mm po efektowne napisy o długości nawet 40 cm.',
+      },
+      {
+        title: 'Haft wielokolorowy:',
+        description: 'Możliwość użycia do 12 kolorów w jednym wzorze, co pozwala na pełne odwzorowanie detali.',
+      },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1611462985358-60d3498e0364?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      src: 'https://images.unsplash.com/photo-1620558138198-cfb9b4f3c294?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1671&q=80',
+      alt: 'Startup Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Możliwości technologiczne:
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 dark:bg-transparent" style="background-color: var(--aw-color-bg-section);"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Description:',
+        description: `For SaaS businesses, user experience is key. AstroWind enhances showcasing SaaS solutions intuitively. The template's Astro 5.0 and Tailwind CSS integration guarantees user-friendly experience, mirroring your software's efficiency. Customize pages to communicate SaaS value and solutions for your audience.`,
+      },
+      {
+        title: 'Benefits:',
+        description: `Ensuring a cohesive and user-centric design for your SaaS website. <br /> Effectively communicate complex SaaS features through visual aids, animations, and interactive elements. <br /> Prioritize user needs and pain points through well-structured layouts and clear navigation. <br /> Encourage visitors to take action with strategically placed CTAs. <br /> Ensures your SaaS website works seamlessly across all devices.`,
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1531973486364-5fa64260d75b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1658&q=80',
+      alt: 'SaaS Businesses Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        SaaS showcase: <br /><span class="text-2xl">Streamlining user experience</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <Content
+    title="Rodzaje haftu komputerowego"
+    tagline="Techniki i możliwości, które oferujemy"
+    isReversed
+    items={[
+      {
+        title: 'Haft w różnych rozmiarach',
+        description: 'Od precyzyjnych liter 4 mm po efektowne napisy o długości nawet 40 cm.',
+        icon: 'tabler:wand',
+      },
+      {
+        title: 'Haft wielokolorowy',
+        description: 'Możliwość użycia do 12 kolorów w jednym wzorze, co pozwala na pełne odwzorowanie detali.',
+        icon: 'tabler:wand',
+      },
+      {
+        title: 'Różne techniki haftu',
+        description: 'Oferujemy haft stebnówkowy, satynowy, po odbrysie, aplikacyjny, tatami oraz efektowny haft 3D.',
+        icon: 'tabler:wand',
+      },
+      {
+        title: 'Specjalistyczne nici',
+        description: 'Haftujemy nićmi metalizowanymi, cieniowanymi, fluorescencyjnymi oraz trudnopalnymi.',
+        icon: 'tabler:wand',
+      },
+    ]}
+    image={{
+      // src: 'https://images.unsplash.com/photo-1611462985358-60d3498e0364?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      src: '~/assets/images/starrynight.PNG',
       alt: 'Astronauts Image',
+      
     }}
   >
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </Content>
- 
+
   <!-- Testimonials Widget *********** -->
 
-  <Testimonials
-    isRandomSequence
+  <Testimonials2
     title="Opinie naszych klientów"
     subtitle="Przekonaj się, co myślą o nas nasi zadowoleni klienci."
     testimonials={[
       {
         testimonial: `Z przyjemnością informujemy, że od 2016 roku współpracujemy z firmą Haft Bielsko w zakresie projektowania i wykonania haftu na odzieży roboczej i reklamowej. Bardzo wysoki poziom obsługi, zaangażowania właściciela oraz pracowników firmy w szybką i fachową realizację zleceń wzbudza nasze oraz naszych Klientów zadowolenie. Firma oferuje poza wykonywaniem wysokiej jakości usług w zakresie znakowania odzieży, również pomoc i fachowe doradztwo przy projektowaniu. W związku z powyższym polecamy firmę Haft Bielsko jako profesjonalnego i rzetelnego wykonawcę usług.`,
-        job: 'Aleksander Kloc',
-        name: 'FPHU BeHaPex',
+        name: 'Aleksander Kloc',
+        title: 'FPHU BeHaPex',
         image: {
           src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
           alt: 'Mark Thompson Image',
@@ -180,8 +257,8 @@ const metadata = {
       },
       {
         testimonial: `Haft Bielsko to firma, którą mogę polecić każdemu przedsiębiorcy. Wielokrotnie korzystałam z usług firmy Pani Agnieszki i zawsze jestem bardzo zadowolona z efektu. Miła i sympatyczna obsługa to dodatkowy plus. Usługa znakowania odzieży służbowej za każdym razem wykonana jest szybko i bardzo solidnie. Hafty są niezwykle trwałe, nici zachowują świeży kolor i nawet częste pranie im nie szkodzi - ciągle wyglądają jak nowe. W Bielsku to na pewno lider w branży!`,
-        job: 'Joanna Wołonciej',
-        name: 'Bistro Piekarnik',
+        name: 'Joanna Wołonciej',
+        title: 'Bistro Piekarnik',
         image: {
           src: 'https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=772&q=80',
           alt: 'Emily Martinez Image',
@@ -189,8 +266,8 @@ const metadata = {
       },
       {
         testimonial: `Haft Bielsko to chyba jedyna firma z jaką współpracowałem w swojej ponad 20 letniej karierze, w której realizacja zamówienia przebiega nierzadko szybciej niż sam proces jego składania 🙂. Terminowość, jakość, słuchanie klienta przy jednoczesnym taktowym i fachowym doradztwie to cechy hafciarni, które cenię najbardziej. Dodając do tego sympatyczną obsługę i konkurencyjne ceny wyłania się obraz partnera idealnego - dla mnie hafciarnia z Bielska-Białej takim bez wątpienia jest.`,
-        job: 'Radosław Szastok',
-        name: 'ATME',
+        name: 'Radosław Szastok',
+        title: 'ATME',
         image: {
           src: 'https://images.unsplash.com/photo-1554727242-741c14fa561c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
           alt: 'Laura Simmons Image',
@@ -198,7 +275,7 @@ const metadata = {
       },
       {
         testimonial: `Chcę wyrazić naszą opinię o współpracy z firmą Haft Bielsko. Jest to bardzo rzetelna firma wykonująca zamówienia na czas z góry umówiony. Produkty są wykonane starannie i według zamówionego wzoru. Nasi klienci są bardzo zadowoleni. Firma Haft Bielsko jest godna polecenia, gdyż wykonuje powierzoną pracę na czas i w bardzo dobrej jakości. Wykonane hafty są doceniane przez naszych klientów i nie mają oni do nich żadnych zastrzeżeń. Są one trwałe i sumiennie wykonane. Każdy detal jest wyraźny.`,
-        name: 'Bogmar BB Sp. z o.o.',
+        title: 'Bogmar BB Sp. z o.o.',
         image: {
           src: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
           alt: 'Alex Foster Image',
@@ -206,8 +283,8 @@ const metadata = {
       },
       {
         testimonial: `Dokładność i powtarzalność ponad wszystko dodatkowo elastyczność i indywidualne podejście w każdym zleconym projekcie. Jedna z najlepszych hafciarni na Podbeskidziu.`,
+        title: 'Iguana Group Sp. z o. o.',
         name: 'Sławomir Smaza',
-        job: 'Iguana Group Sp. z o. o.',
         image: {
           src: 'https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=778&q=80',
           alt: 'Jessica Collins Image',
@@ -215,8 +292,8 @@ const metadata = {
       },
       {
         testimonial: `Współpraca w miłej i życzliwej atmosferze, indywidualne podejście do klienta oraz zaangażowanie w realizację nawet najbardziej nietypowych realizacji, pełen profesjonalizm i wysoka jakość świadczonych usług, gorąco polecam!`,
+        title: 'Dynamic Wear',
         name: 'Dagmara Wizner',
-        job: 'Dynamic Wear',
         image: {
           src: 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
           alt: 'Michael Carter Image',
@@ -224,8 +301,8 @@ const metadata = {
       },
       {
         testimonial: `Nie jest łatwo znaleźć dobrą hafciarnię, która realizuje oprócz wielkich ilości także pojedyncze sztuki danego projektu. W moim biznesie jest bardzo ważne by móc zrealizować niewielkie nakłady danego wzoru i hafciarnia Haft Bielsko mi to umożliwia.`,
+        title: 'The Pleasant Escape',
         name: 'Hanna Gałęska',
-        job: 'The Pleasant Escape',
         image: {
           src: 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
           alt: 'Michael Carter Image',
@@ -233,8 +310,8 @@ const metadata = {
       },
       {
         testimonial: `W branży w której działa moja firma liczy się komfort i elegancja. Z usług firmy PP Relax korzystam już jakiś czas. Przywiązuję dużą wagę do jakości ubrań w jakich codziennie pracuje. Firma Relax dzięki doświadczeniu i zaangażowaniu swoich pracowników zapewnia wysoki standard oferowanych usług i produktów. Polecam z czystym sumieniem.`,
+        title: 'R-medica',
         name: 'Rafał Trembla',
-        job: 'R-medica',
         image: {
           src: 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
           alt: 'Michael Carter Image',
@@ -243,26 +320,27 @@ const metadata = {
     ]}
   />
 
-<!-- Steps2 Widget - Get In Touch -->
+  <!-- Steps2 Widget - Get In Touch -->
 
-<Steps2
-title="Skontaktuj się z nami"
-subtitle="Masz pomysł na haft? Zadzwoń lub napisz do nas – pomożemy go zrealizować!"
-items={[
-  {
-    title: 'Napisz do nas',
-    description: 'kontakt@haftbielsko.pl',
-    icon: 'tabler:mail',
-    href: 'mailto:kontakt@haftbielsko.pl'
-  },
-  {
-    title: 'Zadzwoń',
-    description: '+48 600 030 447',
-    icon: 'tabler:headset',
-    href: 'tel:+48600030447'
-  }
-]}
-><Fragment slot="bg">
-  <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-</Fragment></Steps2>
+  <Steps2
+    title="Skontaktuj się z nami"
+    subtitle="Masz pomysł na haft? Zadzwoń lub napisz do nas – pomożemy go zrealizować!"
+    items={[
+      {
+        title: 'Napisz do nas',
+        description: 'kontakt@haftbielsko.pl',
+        icon: 'tabler:mail',
+        href: 'mailto:kontakt@haftbielsko.pl',
+      },
+      {
+        title: 'Zadzwoń',
+        description: '+48 600 030 447',
+        icon: 'tabler:headset',
+        href: 'tel:+48600030447',
+      },
+    ]}
+    ><Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment></Steps2
+  >
 </Layout>
