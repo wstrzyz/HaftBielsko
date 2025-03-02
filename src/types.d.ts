@@ -159,6 +159,7 @@ export interface Testimonial {
   name?: string;
   job?: string;
   image?: string | unknown;
+  icon?: string;
 }
 
 export interface Input {
@@ -235,8 +236,10 @@ export interface Testimonials extends Omit<Headline, 'classes'>, Widget {
   testimonials?: Array<Testimonial>;
   callToAction?: CallToAction;
   isRandomSequence?: boolean;
-  showToggle?: boolean;
-  toggleButtonLabel?: string;
+}
+
+export interface Testimonials2 extends Omit<Headline, 'classes'>, Widget {
+  testimonials?: Array<Testimonial>;
 }
 
 export interface Brands extends Omit<Headline, 'classes'>, Widget {

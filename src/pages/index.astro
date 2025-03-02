@@ -7,9 +7,10 @@ import Content from '~/components/widgets/Content.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Features3 from '~/components/widgets/Features3.astro';
 import Features2 from '~/components/widgets/Features2.astro';
-import Testimonials2 from '~/components/widgets/Testimonials2.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import Steps2 from '~/components/widgets/Steps2.astro';
+import LocationMap from '~/components/widgets/LocationMap.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import { getPermalink } from '~/utils/permalinks';
 
@@ -19,14 +20,13 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <Fragment slot="announcement"></Fragment>
   <Fragment slot="header">
     <Header
       links={[
         { text: 'Home', href: '#' },
         { text: 'About', href: '#about' },
         { text: 'Resume', href: '#resume' },
-        { text: 'Porfolio', href: '#my-services' },
+        { text: 'Portfolio', href: '#my-services' },
         { text: 'Kontakt', href: '#kontakt' },
         { text: 'Github', href: 'https://github.com/onwidget' },
       ]}
@@ -39,16 +39,50 @@ const metadata = {
   <!-- Features2 Widget - Our Products -->
 
   <Features2
-    title="Na czym haftujemy? Odzież, akcesoria i więcej"
+    title="Na czym haftujemy?"
+    tagline="Odzież, akcesoria i więcej"
     subtitle="Haftujemy na odzieży zwykłej i specjalistycznej. Oferujemy też naszywki i emblematy do łatwego przyszycia."
     columns={3}
     items={[
-      { title: 'Koszulki i bluzy', description: 'Haft na t-shirtach, bluzach i kurtkach – trwałość i elegancja na co dzień.', image:{ src: '~/assets/images/tshirt.jpg', alt: 't-shirt' } },
-      { title: 'Odzież specjalistyczna', description: 'Softshelle, fartuchy medyczne i gastronomiczne z indywidualnym haftem.', image:{ src: '~/assets/images/sweatshirt.jpg', alt: 't-shirt' } },
-      { title: 'Nakrycia głowy', description: 'Personalizowane hafty na czapkach zimowych i z daszkiem.', image:{ src: '~/assets/images/apron.jpg', alt: 't-shirt' } },
-      { title: 'Akcesoria i tekstylia', description: 'Torby, ręczniki, szlafroki – idealne na prezent lub branding firmy.', icon: 'tabler:wand' },
-      { title: 'Elementy odzieżowe', description: 'Haft na wykrojach odzieżowych, tapicerskich i obuwniczych.', icon: 'tabler:wand' },
-      { title: 'Naszywki i emblematy', description: 'Produkujemy wszywki i emblematy – łatwe w aplikacji i niezwykle trwałe.', icon: 'tabler:wand' }
+      {
+        title: 'Koszulki i bluzy',
+        description:
+          'Haft na bluzach, t-shirtach, polówkach, koszulach wizytowych to trwałość i elegancja na co dzień. Od małego logo na piersi po duże logo na plecach.',
+        image: { src: '~/assets/images/bluzy_tshirt.jpg', alt: 'Haft na bluzie i t-shircie' },
+      },
+      {
+        title: 'Odzież specjalistyczna',
+        description:
+          'Softshelle, polary, kurtki, odzież robocza również z elementami odblaskowymi a także fartuchy medyczne i gastronomiczne z Twoim indywidualnym haftem.',
+        image: { src: '~/assets/images/odziez_specjalistyczna.jpg', alt: 't-shirt' },
+      },
+      {
+        title: 'Nakrycia głowy',
+        description:
+          'Personalizowane hafty na czapkach zimowych również wełnianych oraz na czapkach z daszkiem. Piękne hafty na szalikach, kominach czy opaskach.',
+        image: { src: '~/assets/images/nakrycia_glowy.jpg', alt: 'Haft na czapce z daszkiem i czapce zimowej' },
+      },
+      {
+        title: 'Akcesoria i tekstylia',
+        description:
+          'Hafty na torby bawełnianych, filcowych z tkaniny. Znakowanie na ręcznikach, pościeli i szlafrokach – idealne na prezent lub branding firmy.',
+        icon: 'tabler:wand',
+        image: { src: '~/assets/images/torba_worek.jpg', alt: 'Haft na torbie i worku na plecy' },
+      },
+      {
+        title: 'Wykroje i elementy tekstylne',
+        description:
+          'Haft na wykrojach: odzieżowych, tekstylnych, tapicerskich i obuwniczych - to możliwości wykonania haftu w dowolnym miejscu na produkcie.',
+        icon: 'tabler:wand',
+        image: { src: '~/assets/images/wykroje.jpg', alt: 'Haft na torbie i worku na plecy' },
+      },
+      {
+        title: 'Naszywki i emblematy',
+        description:
+          'Produkujemy naszywki i emblematy – łatwe w aplikacji i niezwykle trwałe. Dowolny kształt i wymiar dopasowany do potrzeb każdego Klienta.',
+        icon: 'tabler:wand',
+        image: { src: '~/assets/images/naszywki.jpg', alt: 'Haft na torbie i worku na plecy' },
+      },
     ]}
   />
 
@@ -140,68 +174,6 @@ const metadata = {
   />
 
   <!-- Content Widget - Types of Embroidery -->
-  <!-- Content Widget **************** -->
-
-  <Content
-    title="Rodzaje haftu komputerowego"
-    tagline="Techniki i możliwości, które oferujemy"
-    isReversed
-    items={[
-      {
-        title: 'Haft w różnych rozmiarach:',
-        description: 'Od precyzyjnych liter 4 mm po efektowne napisy o długości nawet 40 cm.',
-      },
-      {
-        title: 'Haft wielokolorowy:',
-        description: 'Możliwość użycia do 12 kolorów w jednym wzorze, co pozwala na pełne odwzorowanie detali.',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1620558138198-cfb9b4f3c294?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1671&q=80',
-      alt: 'Startup Image',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Możliwości technologiczne:
-      </h3>
-    </Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 dark:bg-transparent" style="background-color: var(--aw-color-bg-section);"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isAfterContent={true}
-    items={[
-      {
-        title: 'Description:',
-        description: `For SaaS businesses, user experience is key. AstroWind enhances showcasing SaaS solutions intuitively. The template's Astro 5.0 and Tailwind CSS integration guarantees user-friendly experience, mirroring your software's efficiency. Customize pages to communicate SaaS value and solutions for your audience.`,
-      },
-      {
-        title: 'Benefits:',
-        description: `Ensuring a cohesive and user-centric design for your SaaS website. <br /> Effectively communicate complex SaaS features through visual aids, animations, and interactive elements. <br /> Prioritize user needs and pain points through well-structured layouts and clear navigation. <br /> Encourage visitors to take action with strategically placed CTAs. <br /> Ensures your SaaS website works seamlessly across all devices.`,
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1531973486364-5fa64260d75b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1658&q=80',
-      alt: 'SaaS Businesses Image',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        SaaS showcase: <br /><span class="text-2xl">Streamlining user experience</span>
-      </h3>
-    </Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
   <Content
     title="Rodzaje haftu komputerowego"
     tagline="Techniki i możliwości, które oferujemy"
@@ -209,30 +181,33 @@ const metadata = {
     items={[
       {
         title: 'Haft w różnych rozmiarach',
-        description: 'Od precyzyjnych liter 4 mm po efektowne napisy o długości nawet 40 cm.',
-        icon: 'tabler:wand',
+        description:
+          'Od precyzyjnych liter 4 mm po efektowne napisy o długości nawet 40 cm. Haft możemy umieścić na przodzie lub plechach odzieży a także na rękawie, kołnierzyku czy mankiecie koszuli.',
+        icon: 'tabler:ruler-measure',
       },
       {
         title: 'Haft wielokolorowy',
-        description: 'Możliwość użycia do 12 kolorów w jednym wzorze, co pozwala na pełne odwzorowanie detali.',
-        icon: 'tabler:wand',
+        description:
+          'Możliwość użycia do 12 kolorów w jednym wzorze pozwala na pełne odwzorowanie detali i uzyskanie idealnego efektu a paleta ponad 400 kolorów idealnie spełnia oczekiwania naszych Klientów.',
+        icon: 'tabler:palette',
       },
       {
         title: 'Różne techniki haftu',
-        description: 'Oferujemy haft stebnówkowy, satynowy, po odbrysie, aplikacyjny, tatami oraz efektowny haft 3D.',
-        icon: 'tabler:wand',
+        description:
+          'Oferujemy haft satynowy, stebnówkowy, po odbrysie, aplikacyjny, tatami oraz efektowny haft 3D. Często łączymy klika technik dla idealnego odwzorowania projektu.',
+        icon: 'tabler:squares-selected',
       },
       {
         title: 'Specjalistyczne nici',
-        description: 'Haftujemy nićmi metalizowanymi, cieniowanymi, fluorescencyjnymi oraz trudnopalnymi.',
-        icon: 'tabler:wand',
+        description:
+          'Haftujemy wysokiej jakości nićmi hafciarskimi w tym również metalizowanymi, cieniowanymi, fluorescencyjnymi oraz trudnopalnymi. Nici nie odbarwiają się oraz nie kurczą podczas prania i prasowania.',
+        icon: 'tabler:needle-thread',
       },
     ]}
     image={{
       // src: 'https://images.unsplash.com/photo-1611462985358-60d3498e0364?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
       src: '~/assets/images/starrynight.PNG',
       alt: 'Astronauts Image',
-      
     }}
   >
     <Fragment slot="bg">
@@ -242,80 +217,64 @@ const metadata = {
 
   <!-- Testimonials Widget *********** -->
 
-  <Testimonials2
+  <Testimonials
+    isRandomSequence
     title="Opinie naszych klientów"
-    subtitle="Przekonaj się, co myślą o nas nasi zadowoleni klienci."
+    subtitle="Przekonaj się, co myślą o nas niektórzy, z naszych zadowolonych klientów."
     testimonials={[
       {
         testimonial: `Z przyjemnością informujemy, że od 2016 roku współpracujemy z firmą Haft Bielsko w zakresie projektowania i wykonania haftu na odzieży roboczej i reklamowej. Bardzo wysoki poziom obsługi, zaangażowania właściciela oraz pracowników firmy w szybką i fachową realizację zleceń wzbudza nasze oraz naszych Klientów zadowolenie. Firma oferuje poza wykonywaniem wysokiej jakości usług w zakresie znakowania odzieży, również pomoc i fachowe doradztwo przy projektowaniu. W związku z powyższym polecamy firmę Haft Bielsko jako profesjonalnego i rzetelnego wykonawcę usług.`,
         name: 'Aleksander Kloc',
         title: 'FPHU BeHaPex',
-        image: {
-          src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-          alt: 'Mark Thompson Image',
-        },
+        icon: 'tabler:user',
+      },
+      {
+        testimonial: `Manufakturę haftu znamy od wielu lat, polecili ją nam znajomi. Zlecamy trudne hafty, bo na skórze naturalnej, ale w manufakturze haftu nie ma rzeczy niemożliwych? Każde zlecenie jest realizowane w ekspresowym tempie z dbałością o najmniejsze szczegóły. Polecamy manufakturę każdemu, kto chce otrzymać wyjątkowy haft na swoim produkcie? Gwarantujemy, że będzie zachwyceni finalnym efektem!`,
+        title: 'Paso a Paso',
+        name: 'Marta Kapusta i Paulina Majchrzak',
+        icon: 'tabler:users',
       },
       {
         testimonial: `Haft Bielsko to firma, którą mogę polecić każdemu przedsiębiorcy. Wielokrotnie korzystałam z usług firmy Pani Agnieszki i zawsze jestem bardzo zadowolona z efektu. Miła i sympatyczna obsługa to dodatkowy plus. Usługa znakowania odzieży służbowej za każdym razem wykonana jest szybko i bardzo solidnie. Hafty są niezwykle trwałe, nici zachowują świeży kolor i nawet częste pranie im nie szkodzi - ciągle wyglądają jak nowe. W Bielsku to na pewno lider w branży!`,
         name: 'Joanna Wołonciej',
         title: 'Bistro Piekarnik',
-        image: {
-          src: 'https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=772&q=80',
-          alt: 'Emily Martinez Image',
-        },
+        icon: 'tabler:user',
       },
       {
         testimonial: `Haft Bielsko to chyba jedyna firma z jaką współpracowałem w swojej ponad 20 letniej karierze, w której realizacja zamówienia przebiega nierzadko szybciej niż sam proces jego składania 🙂. Terminowość, jakość, słuchanie klienta przy jednoczesnym taktowym i fachowym doradztwie to cechy hafciarni, które cenię najbardziej. Dodając do tego sympatyczną obsługę i konkurencyjne ceny wyłania się obraz partnera idealnego - dla mnie hafciarnia z Bielska-Białej takim bez wątpienia jest.`,
         name: 'Radosław Szastok',
         title: 'ATME',
-        image: {
-          src: 'https://images.unsplash.com/photo-1554727242-741c14fa561c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-          alt: 'Laura Simmons Image',
-        },
+        icon: 'tabler:user',
       },
       {
         testimonial: `Chcę wyrazić naszą opinię o współpracy z firmą Haft Bielsko. Jest to bardzo rzetelna firma wykonująca zamówienia na czas z góry umówiony. Produkty są wykonane starannie i według zamówionego wzoru. Nasi klienci są bardzo zadowoleni. Firma Haft Bielsko jest godna polecenia, gdyż wykonuje powierzoną pracę na czas i w bardzo dobrej jakości. Wykonane hafty są doceniane przez naszych klientów i nie mają oni do nich żadnych zastrzeżeń. Są one trwałe i sumiennie wykonane. Każdy detal jest wyraźny.`,
         title: 'Bogmar BB Sp. z o.o.',
-        image: {
-          src: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-          alt: 'Alex Foster Image',
-        },
+        name: 'Alina Szczyrbowska',
+        icon: 'tabler:user',
       },
       {
         testimonial: `Dokładność i powtarzalność ponad wszystko dodatkowo elastyczność i indywidualne podejście w każdym zleconym projekcie. Jedna z najlepszych hafciarni na Podbeskidziu.`,
         title: 'Iguana Group Sp. z o. o.',
         name: 'Sławomir Smaza',
-        image: {
-          src: 'https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=778&q=80',
-          alt: 'Jessica Collins Image',
-        },
+        icon: 'tabler:user',
       },
       {
         testimonial: `Współpraca w miłej i życzliwej atmosferze, indywidualne podejście do klienta oraz zaangażowanie w realizację nawet najbardziej nietypowych realizacji, pełen profesjonalizm i wysoka jakość świadczonych usług, gorąco polecam!`,
         title: 'Dynamic Wear',
         name: 'Dagmara Wizner',
-        image: {
-          src: 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-          alt: 'Michael Carter Image',
-        },
+        icon: 'tabler:user',
       },
       {
         testimonial: `Nie jest łatwo znaleźć dobrą hafciarnię, która realizuje oprócz wielkich ilości także pojedyncze sztuki danego projektu. W moim biznesie jest bardzo ważne by móc zrealizować niewielkie nakłady danego wzoru i hafciarnia Haft Bielsko mi to umożliwia.`,
         title: 'The Pleasant Escape',
         name: 'Hanna Gałęska',
-        image: {
-          src: 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-          alt: 'Michael Carter Image',
-        },
+        icon: 'tabler:user',
       },
       {
-        testimonial: `W branży w której działa moja firma liczy się komfort i elegancja. Z usług firmy PP Relax korzystam już jakiś czas. Przywiązuję dużą wagę do jakości ubrań w jakich codziennie pracuje. Firma Relax dzięki doświadczeniu i zaangażowaniu swoich pracowników zapewnia wysoki standard oferowanych usług i produktów. Polecam z czystym sumieniem.`,
+        testimonial: `W branży w której działa moja firma liczy się komfort i elegancja. Z usług firmy Haft Bielsko korzystam już jakiś czas. Przywiązuję dużą wagę do jakości ubrań w jakich codziennie pracuje. Firma Haft Bielsko dzięki doświadczeniu i zaangażowaniu swoich pracowników zapewnia wysoki standard oferowanych usług i produktów. Polecam z czystym sumieniem.`,
         title: 'R-medica',
         name: 'Rafał Trembla',
-        image: {
-          src: 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-          alt: 'Michael Carter Image',
-        },
+        icon: 'tabler:user',
       },
     ]}
   />
@@ -343,4 +302,28 @@ const metadata = {
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment></Steps2
   >
+  <LocationMap
+    zoom={16}
+    title="Bay Area Services"
+    address="555 Market St, San Francisco, CA 94105"
+    hours="24/7 Emergency Service"
+    phone="1-800-555-1234"
+    website="https://bayareaservices.com"
+    markerImage="~/assets/images/hb_logo.svg"
+    markerWidth={60}
+    markerHeight={60}
+    primaryColor="#27AE60"
+    secondaryColor="#2C3E50"
+    popupWidth={350}
+    containerHeight="500px"
+    containerClass="homepage-map shadow-xl"
+    markerScale={1.2}
+    showPopupOnLoad={true}
+    latitude={49.813368134454976}
+    longitude={19.048336993439236}
+    title="YourCompany Services"
+    scrollZoom={false}
+    dragPan={true}
+    navigationControls={true}
+  />
 </Layout>
