@@ -1,0 +1,117 @@
+---
+import Headline from '~/components/ui/Headline.astro';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import Image from '~/components/common/Image.astro';
+import type { Testimonials2 } from '~/types';
+import { Icon } from 'astro-icon/components';
+
+const {
+  title = '',
+  subtitle = '',
+  tagline = '',
+  testimonials = [],
+  id,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render('bg'),
+} = Astro.props;
+---
+
+<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-6xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
+  <Headline title={title} subtitle={subtitle} tagline={tagline} />
+
+  <div class="bg-red-50 relative" id="testimonial-wrapper">
+    <div class="flex flex-row gap-10 items-center justify-between">
+      <div class="relative w-full">
+        <div class="relative w-full h-full" id="testimonial-container">
+          {
+            testimonials.map(({ title, testimonial, name, image }, index) => (
+              <div
+                class={`testimonial absolute top-0 left-0 w-full transition-opacity duration-500 ${index === 0 ? 'opacity-100' : 'opacity-0'}`}
+              >
+                <div class="flex flex-col items-center text-center">
+                  {image && (
+                    <Image
+                      class="w-28 h-28 rounded-full shadow-[0_2px_22px_-4px_rgba(93,96,127,0.6)] border-2 border-white"
+                      width={40}
+                      height={40}
+                      widths={[400, 768]}
+                      layout="fixed"
+                      {...image}
+                    />
+                  )}
+                  <div class="mt-4">
+                    <h4 class="text-gray-800 text-base font-bold">{title}</h4>
+                    <p class="text-xs text-gray-500 mt-1">{name}</p>
+                  </div>
+                </div>
+
+                <div class="mt-6 text-center">
+                  <p class="text-sm leading-relaxed text-gray-800">{testimonial}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+      <div
+        data-show-prev-testimonial
+        class="flex items-center justify-between p-2 rounded-full cursor-pointer bg-primary"
+      >
+        <Icon name="tabler:chevron-left" class="w-6 h-6 text-white" />
+      </div>
+      <div
+        class="flex items-center justify-between p-2 rounded-full cursor-pointer bg-primary"
+        data-show-next-testimonial
+      >
+        <Icon name="tabler:chevron-right" class="w-6 h-6 text-white" />
+      </div>
+    </div>
+  </div>
+</WidgetWrapper>
+
+<script>
+  let currentTestimonial = 0;
+  const buttonPrev = document.querySelector('[data-show-prev-testimonial]');
+  const buttonNext = document.querySelector('[data-show-next-testimonial]');
+  const testimonials = document.querySelectorAll('.testimonial');
+  const testimonialWrapper = document.getElementById('testimonial-wrapper');
+
+  function showTestimonial(index) {
+    testimonials[currentTestimonial].classList.remove('opacity-100');
+    testimonials[currentTestimonial].classList.add('opacity-0');
+    currentTestimonial = index;
+    testimonials[currentTestimonial].classList.remove('opacity-0');
+    testimonials[currentTestimonial].classList.add('opacity-100');
+  }
+
+  function showNextTestimonial() {
+    const nextIndex = (currentTestimonial + 1) % testimonials.length;
+    showTestimonial(nextIndex);
+  }
+
+  function showPrevTestimonial() {
+    const prevIndex = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+    showTestimonial(prevIndex);
+  }
+
+  function adjustContainerHeight() {
+    if (!testimonialWrapper) return;
+    let maxHeight = 0;
+    testimonials.forEach((testimonial) => {
+      testimonial.classList.add('relative');
+      const height = testimonial.clientHeight;
+      testimonial.classList.remove('relative');
+      testimonial.classList.add('absolute');
+      if (height > maxHeight) {
+        maxHeight = height;
+      }
+    });
+    testimonialWrapper.style.height = `${maxHeight}px`;
+  }
+
+  buttonPrev?.addEventListener('click', () => showPrevTestimonial());
+  buttonNext?.addEventListener('click', () => showNextTestimonial());
+  window.addEventListener('load', adjustContainerHeight);
+  window.addEventListener('resize', adjustContainerHeight);
+</script>

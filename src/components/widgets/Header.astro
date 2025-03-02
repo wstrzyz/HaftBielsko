@@ -74,6 +74,10 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
       <a class="flex items-center" href={getHomePermalink()}>
         <Logo />
       </a>
+      <div class="hidden lg:flex flex-col justify-center ml-5 border-l-2 border-gray-200 pl-5 my-3">
+        <a class="text-muted" href="mailto:kontakt@haftbielsko.pl">kontakt@haftbielsko.pl</a>
+        <a class="text-muted" href="tel:+48600030447">+48 600 030 447</a>
+      </div>
       <div class="flex items-center md:hidden">
         <ToggleMenu />
       </div>
