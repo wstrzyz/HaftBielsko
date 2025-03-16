@@ -2,17 +2,15 @@
 import { Icon } from 'astro-icon/components';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import Headline from '~/components/ui/Headline.astro';
-import Button from '~/components/ui/Button.astro';
 import type { Steps as Props } from '~/types';
 
 const {
   title = await Astro.slots.render('title'),
   subtitle = await Astro.slots.render('subtitle'),
   tagline,
-  callToAction = await Astro.slots.render('callToAction'),
   items = [],
   isReversed = false,
-
+  address = '',
   id,
   isDark = false,
   classes = {},
@@ -31,45 +29,47 @@ const {
           container: 'text-center md:text-left rtl:md:text-right mb-4 md:mb-8',
           title: 'mb-4 text-3xl lg:text-4xl font-bold font-heading',
           subtitle: 'mb-8 text-xl text-muted dark:text-slate-400',
-          // ...((classes?.headline as {}) ?? {}),
         }}
       />
 
-      <div class="w-full text-center md:text-left rtl:md:text-right">
-        {
-          typeof callToAction === 'string' ? (
-            <Fragment set:html={callToAction} />
-          ) : (
-            callToAction &&
-            callToAction.text &&
-            callToAction.href && <Button variant="primary" {...callToAction} class="mb-12 w-auto" />
-          )
-        }
-      </div>
+      {
+        address && (
+          <div class="mb-8">
+            <h3 class="mb-4 text-xl font-semibold font-heading text-center md:text-left">Nasz adres:</h3>
+            <p class="text-lg text-muted dark:text-gray-400 text-center md:text-left">{address}</p>
+          </div>
+        )
+      }
     </div>
     <div class="w-full lg:w-1/2 px-0">
-      <ul class="space-y-10">
+      <ul>
         {
           items && items.length
-            ? items.map(({ title: title2, description, icon, href }, index) => {
+            ? items.map(({ title: title2, description, icon, href, linkTarget }, index) => {
                 const content = (
                   <>
-                    <div class="pr-4 sm:pl-4 rtl:pr-0 rtl:pl-4 rtl:sm:pl-0 rtl:sm:pr-4">
-                      <span class="flex w-16 h-16 mx-auto items-center justify-center text-2xl font-bold rounded-full bg-blue-100 text-primary">
+                    <div class="pr-4 sm:pl-4">
+                      <span class="flex w-16 h-16 mx-auto items-center justify-center text-2xl font-bold rounded-full bg-orange-50 text-primary">
                         {icon ? <Icon name={icon} class="w-6 h-6 icon-bold" /> : index + 1}
                       </span>
                     </div>
-                    <div class="pl-4 rtl:pl-0 rtl:pr-4">
+                    <div class="pl-4">
                       <h3 class="mb-4 text-xl font-semibold font-heading" set:html={title2} />
                       <p class="text-muted dark:text-gray-400" set:html={description} />
                     </div>
                   </>
                 );
-    
+
                 return (
-                <li class="flex md:-mx-4 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200">
-                {href ? <a href={href} class="flex w-full">{content}</a> : content}
-              </li>
+                  <li class="flex md:-mx-4 hover:bg-orange-50 dark:hover:bg-gray-700 transition-all duration-300 rounded-lg">
+                    {href ? (
+                      <a href={href} target={linkTarget} class="flex w-full py-4">
+                        {content}
+                      </a>
+                    ) : (
+                      content
+                    )}
+                  </li>
                 );
               })
             : ''

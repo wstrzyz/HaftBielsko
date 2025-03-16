@@ -274,10 +274,12 @@ export interface Steps extends Omit<Headline, 'classes'>, Widget {
     icon?: string;
     classes?: Record<string, string>;
     href?: string;
+    linkTarget?: "_blank" | "_self" | "_parent" | "_top";
   }>;
   callToAction?: string | CallToAction;
   image?: string | Image;
   isReversed?: boolean;
+  address?: string;
 }
 
 export interface Content extends Omit<Headline, 'classes'>, Widget {
@@ -291,3 +293,12 @@ export interface Content extends Omit<Headline, 'classes'>, Widget {
 }
 
 export interface Contact extends Omit<Headline, 'classes'>, Form, Widget {}
+
+export interface LocationMap extends Omit<Headline, 'classes'>, Widget {
+  latitude: number;
+  longitude: number;
+  zoom?: number;
+  markerColor?: string;
+  containerHeight?: string;
+  mapStyle?: 'light' | 'dark';
+}

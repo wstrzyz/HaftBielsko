@@ -5,7 +5,6 @@ import ToggleTheme from '~/components/common/ToggleTheme.astro';
 import ToggleMenu from '~/components/common/ToggleMenu.astro';
 import Button from '~/components/ui/Button.astro';
 
-import { getHomePermalink } from '~/utils/permalinks';
 import { trimSlash, getAsset } from '~/utils/permalinks';
 import type { CallToAction } from '~/types';
 
@@ -71,12 +70,12 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
     ]}
   >
     <div class:list={[{ 'mr-auto rtl:mr-0 rtl:ml-auto': position === 'right' }, 'flex justify-between']}>
-      <a class="flex items-center" href={getHomePermalink()}>
+      <a class="flex items-center" href={'#home'}>
         <Logo />
       </a>
-      <div class="hidden lg:flex flex-col justify-center ml-5 border-l-2 border-gray-200 pl-5 my-3">
-        <a class="text-muted" href="mailto:kontakt@haftbielsko.pl">kontakt@haftbielsko.pl</a>
-        <a class="text-muted" href="tel:+48600030447">+48 600 030 447</a>
+      <div class="hidden lg:flex flex-col justify-center ml-5 border-l-2 border-gray-200 pl-2 my-3">
+        <a class="text-muted hover:underline text-sm" href="mailto:kontakt@haftbielsko.pl">kontakt@haftbielsko.pl</a>
+        <a class="text-muted hover:underline text-sm" href="tel:+48600030447">+48 600 030 447</a>
       </div>
       <div class="flex items-center md:hidden">
         <ToggleMenu />
@@ -120,7 +119,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
               ) : (
                 <a
                   class:list={[
-                    'hover:text-link dark:hover:text-white px-4 py-3 flex items-center whitespace-nowrap',
+                    'hover:text-link hover:text-orange-500 transition-all dark:hover:text-white px-8 py-5 md:px-3 lg:px-4 xl:px-5 flex items-center whitespace-nowrap',
                     { 'aw-link-active': href === currentPath },
                   ]}
                   href={href}
