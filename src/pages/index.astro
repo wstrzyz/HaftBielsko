@@ -2,17 +2,14 @@
 import Layout from '~/layouts/PageLayout.astro';
 
 import Header from '~/components/widgets/Header.astro';
-import Hero from '~/components/widgets/Hero.astro';
+import Hero2 from '~/components/widgets/Hero2.astro';
 import Content from '~/components/widgets/Content.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
 import Features3 from '~/components/widgets/Features3.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import Steps2 from '~/components/widgets/Steps2.astro';
 import LocationMap from '~/components/widgets/LocationMap.astro';
-import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
-import { getPermalink } from '~/utils/permalinks';
 
 const metadata = {
   title: 'HaftBielsko.pl - Twoja hafciarnia na Podbeskidziu',
@@ -23,12 +20,13 @@ const metadata = {
   <Fragment slot="header">
     <Header
       links={[
-        { text: 'Home', href: '#' },
-        { text: 'About', href: '#about' },
-        { text: 'Resume', href: '#resume' },
-        { text: 'Portfolio', href: '#my-services' },
+        // { text: 'Home', href: '#home' },
+        { text: 'Produkty', href: '#produkty' },
+        { text: 'O nas', href: '#o-nas' },
+        { text: 'Proces realizacji', href: '#proces-realizacji' },
+        { text: 'Technologia', href: '#technologia' },
+        { text: 'Opinie', href: '#opinie' },
         { text: 'Kontakt', href: '#kontakt' },
-        { text: 'Github', href: 'https://github.com/onwidget' },
       ]}
       isSticky
       position="right"
@@ -36,9 +34,37 @@ const metadata = {
     />
   </Fragment>
 
+  <!-- Hero2 Widget ******************* -->
+
+  <Hero2
+    id="home"
+    tagline="Twój projekt, nasz haft, wspólny sukces"
+    actions={[
+      { variant: 'primary', target: '_blank', text: 'Skontaktuj się', href: '#kontakt' },
+      { text: 'Proces realizacji', href: '#proces-realizacji' },
+    ]}
+    image={{
+      src: '~/assets/images/hero.jpg',
+      alt: 'AstroWind Hero Image',
+    }}
+  >
+    <Fragment slot="title">Wyhaftowani w każdym calu</Fragment>
+
+    <Fragment slot="subtitle">
+      <span class="hidden sm:inline">
+        Precyzyjny <span class="font-semibold">haft komputerowy</span> na <span class="font-semibold"
+          >odzieży, czapkach i akcesoriach firmowych</span
+        >. Zamieniamy zwykłe tkaniny w nośniki Twojej marki, łącząc technologię hafciarską z rzemieślniczym zacięciem <span
+          class="font-semibold">od 25 lat</span
+        >.
+      </span>
+    </Fragment>
+  </Hero2>
+
   <!-- Features2 Widget - Our Products -->
 
   <Features2
+    id="produkty"
     title="Na czym haftujemy?"
     tagline="Odzież, akcesoria i więcej"
     subtitle="Haftujemy na odzieży zwykłej i specjalistycznej. Oferujemy też naszywki i emblematy do łatwego przyszycia."
@@ -84,11 +110,16 @@ const metadata = {
         image: { src: '~/assets/images/naszywki.jpg', alt: 'Haft na torbie i worku na plecy' },
       },
     ]}
-  />
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
 
   <!-- Features3 Widget - our skills -->
 
   <Features3
+    id="o-nas"
     title="Co nas wyróżnia?"
     subtitle="Zobacz dlaczego tworzymy hafty na najwyższym poziomie."
     columns={3}
@@ -106,7 +137,10 @@ const metadata = {
         title: 'Własne biuro projektowe',
         description: 'Tworzymy i optymalizujemy wzory haftów, aby zapewnić perfekcyjny efekt na każdym materiale.',
       },
-      { title: 'Ponad 25 lat doświadczenia', description: 'Od lat doskonalimy nasze umiejętności (dawniej PP Relax).' },
+      {
+        title: 'Ponad 25 lat doświadczenia',
+        description: 'Od lat doskonalimy nasze umiejętności (dawniej PP Relax).',
+      },
       {
         title: 'Ekspresowa realizacja zamówień',
         description: 'Dostarczamy hafty na czas, nawet przy krótkich terminach.',
@@ -125,15 +159,12 @@ const metadata = {
         description: 'Oferujemy również nadruki i sublimację, zapewniając pełne wsparcie w personalizacji tekstyliów.',
       },
     ]}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Features3>
+  />
 
   <!-- Steps Widget - how we work -->
 
   <Steps
+    id="proces-realizacji"
     title="Proces realizacji"
     tagline="Jak zamówić haft u nas?"
     items={[
@@ -168,13 +199,18 @@ const metadata = {
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
+      src: '~/assets/images/proces.jpg',
       alt: 'Steps image',
     }}
-  />
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Steps>
 
   <!-- Content Widget - Types of Embroidery -->
   <Content
+    id="technologia"
     title="Rodzaje haftu komputerowego"
     tagline="Techniki i możliwości, które oferujemy"
     isReversed
@@ -205,19 +241,15 @@ const metadata = {
       },
     ]}
     image={{
-      // src: 'https://images.unsplash.com/photo-1611462985358-60d3498e0364?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      src: '~/assets/images/starrynight.PNG',
+      src: '~/assets/images/techniki_haftu.jpg',
       alt: 'Astronauts Image',
     }}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
+  />
 
   <!-- Testimonials Widget *********** -->
 
   <Testimonials
+    id="opinie"
     isRandomSequence
     title="Opinie naszych klientów"
     subtitle="Przekonaj się, co myślą o nas niektórzy, z naszych zadowolonych klientów."
@@ -277,53 +309,47 @@ const metadata = {
         icon: 'tabler:user',
       },
     ]}
-  />
+    ><Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment></Testimonials
+  >
 
   <!-- Steps2 Widget - Get In Touch -->
 
   <Steps2
+    id="kontakt"
     title="Skontaktuj się z nami"
     subtitle="Masz pomysł na haft? Zadzwoń lub napisz do nas – pomożemy go zrealizować!"
+    address="ul. Stefanii Sempołowskiej 39a, 43-300 Bielsko-Biała"
     items={[
       {
         title: 'Napisz do nas',
         description: 'kontakt@haftbielsko.pl',
         icon: 'tabler:mail',
         href: 'mailto:kontakt@haftbielsko.pl',
+        linkTarget: '_self',
       },
       {
         title: 'Zadzwoń',
         description: '+48 600 030 447',
         icon: 'tabler:headset',
         href: 'tel:+48600030447',
+        linkTarget: '_self',
+      },
+      {
+        title: 'Jesteśmy na Facebooku',
+        description: 'fb.com/haftbielsko',
+        icon: 'tabler:brand-facebook',
+        href: 'https://facebook.com/haftbielsko',
+        linkTarget: '_blank',
       },
     ]}
-    ><Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment></Steps2
-  >
+  />
   <LocationMap
+    latitude={49.81340813}
+    longitude={19.04826993439236}
     zoom={16}
-    title="Bay Area Services"
-    address="555 Market St, San Francisco, CA 94105"
-    hours="24/7 Emergency Service"
-    phone="1-800-555-1234"
-    website="https://bayareaservices.com"
-    markerImage="~/assets/images/hb_logo.svg"
-    markerWidth={60}
-    markerHeight={60}
-    primaryColor="#27AE60"
-    secondaryColor="#2C3E50"
-    popupWidth={350}
-    containerHeight="500px"
-    containerClass="homepage-map shadow-xl"
-    markerScale={1.2}
-    showPopupOnLoad={true}
-    latitude={49.813368134454976}
-    longitude={19.048336993439236}
-    title="YourCompany Services"
-    scrollZoom={false}
-    dragPan={true}
-    navigationControls={true}
+    containerHeight="400px"
+    mapStyle="light"
   />
 </Layout>
